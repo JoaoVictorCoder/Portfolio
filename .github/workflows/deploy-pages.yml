@@ -65,22 +65,22 @@ jobs:
               p for p in templates_dir.glob("*.html") if p.name != "base.html"
           )
 
-          with app.app_context():
-              for template_path in template_files:
-                  page_name = template_path.stem
+          for template_path in template_files:
+              page_name = template_path.stem
+              with app.test_request_context("/"):
                   html = render_template(
                       template_path.name,
                       component_css=f"css/components/{page_name}.css",
                   )
 
-                  # Keep assets working on both user pages and project pages.
-                  base_path = "${BASE_PATH}".strip()
-                  if base_path and base_path != "/":
-                      html = html.replace('href="/static/', f'href="{base_path}/static/')
-                      html = html.replace('src="/static/', f'src="{base_path}/static/')
+              # Keep assets working on both user pages and project pages.
+              base_path = "${BASE_PATH}".strip()
+              if base_path and base_path != "/":
+                  html = html.replace('href="/static/', f'href="{base_path}/static/')
+                  html = html.replace('src="/static/', f'src="{base_path}/static/')
 
-                  output_file = output_dir / f"{page_name}.html"
-                  output_file.write_text(html, encoding="utf-8")
+              output_file = output_dir / f"{page_name}.html"
+              output_file.write_text(html, encoding="utf-8")
 
           static_src = project_root / "static"
           static_dst = output_dir / "static"
