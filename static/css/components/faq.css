@@ -1,11 +1,12 @@
 .c-faq#s-faq {
   padding: var(--space-120) var(--space-0);
+  background-color: #0a0a0a;
 }
 
 .c-faq#s-faq h2 {
   font-size: var(--font-size-40);
   font-weight: var(--font-weight-500);
-  color: var(--color-heading);
+  color: var(--color-dark-text-primary);
   margin-bottom: var(--space-32);
 }
 
@@ -17,7 +18,7 @@
 }
 
 .c-faq#s-faq .faq-item {
-  color: var(--color-white);
+  color: var(--color-dark-text-primary);
   padding: var(--space-32) var(--space-0);
   transition: all var(--transition-fast);
   border-bottom: 1px solid var(--color-faq-border);
@@ -36,12 +37,12 @@
   align-items: center;
   font-weight: var(--font-weight-500);
   font-size: var(--font-size-20);
-  color: var(--color-white);
+  color: var(--color-dark-text-primary);
 }
 
 .c-faq#s-faq .faq-question h3 {
   font-size: var(--font-size-20);
-  color: var(--color-heading);
+  color: var(--color-dark-text-primary);
   font-weight: var(--font-weight-600);
 }
 
@@ -58,7 +59,7 @@
 .c-faq#s-faq .faq-answer {
   margin-top: var(--space-16);
   font-size: var(--font-size-18);
-  color: var(--color-body);
+  color: var(--color-dark-text-secondary);
   display: none;
 }
 

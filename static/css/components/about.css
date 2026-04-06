@@ -1,5 +1,6 @@
 .c-about#s-about {
   padding: var(--space-120) var(--space-0);
+  background-color: #0a0a0a;
 }
 
 .c-about#s-about .grid-layout {
@@ -10,7 +11,7 @@
 .c-about#s-about .grid-layout h2 {
   font-size: var(--font-size-16);
   font-weight: var(--font-weight-500);
-  color: var(--color-body);
+  color: var(--color-dark-text-muted);
   text-transform: uppercase;
 }
 
@@ -18,28 +19,30 @@
   margin-top: var(--space-12);
   font-size: var(--font-size-40);
   font-weight: var(--font-weight-500);
+  color: var(--color-dark-text-primary);
 }
 
-.c-about#s-about .grid-layout > div:nth-child(2) {
+.c-about#s-about .grid-layout>div:nth-child(2) {
   width: 70%;
   display: flex;
   gap: var(--space-24);
   flex-direction: column;
 }
 
-.c-about#s-about .grid-layout > div:nth-child(2) h4 {
+.c-about#s-about .grid-layout>div:nth-child(2) h4 {
   font-size: var(--font-size-32);
   font-weight: var(--font-weight-500);
+  color: var(--color-dark-text-primary);
 }
 
-.c-about#s-about .grid-layout > div:nth-child(2) p {
+.c-about#s-about .grid-layout>div:nth-child(2) p {
   font-size: var(--font-size-18);
-  color: var(--color-body);
+  color: var(--color-dark-text-secondary);
   line-height: var(--line-height-150);
 }
 
-.c-about#s-about .grid-layout > div:nth-child(2) p b {
-  color: var(--color-heading);
+.c-about#s-about .grid-layout>div:nth-child(2) p b {
+  color: var(--color-dark-text-primary);
 }
 
 @media screen and (max-width:1200px) {
@@ -47,7 +50,7 @@
     padding: var(--space-72) var(--space-20);
   }
 
-  .c-about#s-about .grid-layout > div:nth-child(2) {
+  .c-about#s-about .grid-layout>div:nth-child(2) {
     flex-wrap: wrap;
     gap: var(--space-32);
   }
@@ -59,11 +62,11 @@
     gap: var(--space-40);
   }
 
-  .c-about#s-about .grid-layout > div:nth-child(2) {
+  .c-about#s-about .grid-layout>div:nth-child(2) {
     width: 100%;
   }
 
-  .c-about#s-about .grid-layout > div:nth-child(2) h4 {
+  .c-about#s-about .grid-layout>div:nth-child(2) h4 {
     font-size: 2.8rem;
   }
 }

@@ -62,8 +62,8 @@ export function initHomeGrid() {
       return;
     }
 
-    const col = Math.floor(x / cellSize);
-    const row = Math.floor(y / cellSize);
+    const col = Math.min(cols - 1, Math.floor((x / rect.width) * cols));
+    const row = Math.min(rows - 1, Math.floor((y / rect.height) * rows));
 
     if (col < 0 || col >= cols || row < 0 || row >= rows) {
       return;
@@ -71,32 +71,34 @@ export function initHomeGrid() {
 
     clearEffects();
 
-    const index = row * cols + col;
-    const neighbors = [
-      index,
-      index - 1,
-      index + 1,
-      index - cols,
-      index + cols,
-      index - cols - 1,
-      index - cols + 1,
-      index + cols - 1,
-      index + cols + 1,
-    ];
+    for (let rowOffset = -1; rowOffset <= 1; rowOffset += 1) {
+      for (let colOffset = -1; colOffset <= 1; colOffset += 1) {
+        const neighborRow = row + rowOffset;
+        const neighborCol = col + colOffset;
 
-    neighbors.forEach((neighborIndex, idx) => {
-      const cell = cells[neighborIndex];
+        if (
+          neighborRow < 0 ||
+          neighborRow >= rows ||
+          neighborCol < 0 ||
+          neighborCol >= cols
+        ) {
+          continue;
+        }
 
-      if (!cell) {
-        return;
+        const neighborIndex = neighborRow * cols + neighborCol;
+        const cell = cells[neighborIndex];
+
+        if (!cell) {
+          continue;
+        }
+
+        if (rowOffset === 0 && colOffset === 0) {
+          cell.classList.add('active');
+        } else {
+          cell.classList.add('near');
+        }
       }
-
-      if (idx === 0) {
-        cell.classList.add('active');
-      } else {
-        cell.classList.add('near');
-      }
-    });
+    }
   }
 
   function onMouseMove(event) {
@@ -162,7 +164,7 @@ export function initHomeGrid() {
     runChainFromIndex(index);
   }
 
-  section.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('mousemove', onMouseMove);
   section.addEventListener('mouseleave', clearEffects);
   grid.addEventListener('click', onGridClick);
   window.addEventListener('resize', buildGrid);

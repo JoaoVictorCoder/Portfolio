@@ -97,6 +97,9 @@
   --color-mobile-nav-bg: #0c0b16;
   --color-whatsapp: #25d366;
   --color-whatsapp-hover: #1ebe5d;
+  --color-dark-text-primary: #ffffff;
+  --color-dark-text-secondary: rgba(255, 255, 255, 0.78);
+  --color-dark-text-muted: rgba(255, 255, 255, 0.72);
 
   --gradient-brand: linear-gradient(270deg, #986dff 0%, #986dff 100%);
 
