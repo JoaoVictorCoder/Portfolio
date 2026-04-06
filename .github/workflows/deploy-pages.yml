@@ -41,6 +41,7 @@ jobs:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: |
           python - <<'PY'
+          import os
           from pathlib import Path
           import shutil
 
@@ -74,7 +75,7 @@ jobs:
                   )
 
               # Keep assets working on both user pages and project pages.
-              base_path = "${BASE_PATH}".strip()
+              base_path = os.environ.get("BASE_PATH", "").strip()
               if base_path and base_path != "/":
                   html = html.replace('href="/static/', f'href="{base_path}/static/')
                   html = html.replace('src="/static/', f'src="{base_path}/static/')
