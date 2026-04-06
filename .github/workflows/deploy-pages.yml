@@ -77,8 +77,8 @@ jobs:
               # Keep assets working on both user pages and project pages.
               base_path = os.environ.get("BASE_PATH", "").strip()
               if base_path and base_path != "/":
-                  html = html.replace('href="/static/', f'href="{base_path}/static/')
-                  html = html.replace('src="/static/', f'src="{base_path}/static/')
+                  html = html.replace('"/static/', f'"{base_path}/static/')
+                  html = html.replace("'/static/", f"'{base_path}/static/")
 
               output_file = output_dir / f"{page_name}.html"
               output_file.write_text(html, encoding="utf-8")
