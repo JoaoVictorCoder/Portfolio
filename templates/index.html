@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header class="c-header">
+  <div class="grid-layout">
+    <nav class="c-header__nav">
+      <h1 class="permanent-marker-regular">JoaoVictorCoder</h1>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section id="s-home" class="c-home">
+    <div class="home-grid-bg" id="home-grid-bg" aria-hidden="true"></div>
+    <div class="grid-layout">
+      <div id="home">
+        <div id="home-container-text">
+          <h1>Desenvolvedor Frontend</h1>
+          <h2>
+            Dev Frontend, não tenho experiência mas consigo usar HTML, CSS e JavaScript para criar interfaces web
+            básicas.
+          </h2>
+          <a download href="{{ url_for('static', filename='assets/cv.pdf') }}">Baixar currículo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="s-about" class="c-about">
+    <div class="grid-layout">
+      <div>
+        <h2>Sobre mim</h2>
+        <h3>Quem sou</h3>
+      </div>
+      <div>
+        <h4>Estou construindo minha jornada em desenvolvimento frontend</h4>
+        <p>
+          Sou o <b>JoaoVictorCoder</b>, focado em criar interfaces web com HTML,
+          CSS e JavaScript.
+        </p>
+        <p>
+          Ainda não tenho experiência profissional, mas sigo estudando e praticando
+          todos os dias para evoluir como desenvolvedor.
+        </p>
+        <p>
+          Atualmente estou aprendendo Python com Flask e também engenharia de
+          prompts para ampliar minhas habilidades.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="s-projects" class="c-projects">
+    <div class="grid-layout">
+      <div>
+        <h2>Clientes reais</h2>
+        <h3>Cases entregues</h3>
+      </div>
+
+      <section class="projects" aria-label="Projetos">
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/1.png') }}" alt="EA4 Mobilidade" loading="eager" />
+          <h3>EA4 Mobilidade</h3>
+          <p>Gestão inteligente de transporte corporativo para empresas.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/2.png') }}" alt="Box299" loading="eager" />
+          <h3>Box299</h3>
+          <p>Serviços especializados de estética automotiva premium.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/3.png') }}" alt="WP Builders" loading="eager" />
+          <h3>WP Builders</h3>
+          <p>Gestão completa e organizada de projetos de reforma.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/4.png') }}" alt="Tecnousp" loading="eager" />
+          <h3>Tecnousp</h3>
+          <p>Serviços ágeis de manutenção em residências e condomínios.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/5.png') }}" alt="Hair Skin" loading="eager" />
+          <h3>Hair Skin</h3>
+          <p>Produto físico inovador de beleza para cuidados capilares.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/6.png') }}" alt="Riqueza Planejada" loading="eager" />
+          <h3>Riqueza Planejada</h3>
+          <p>Infoproduto sobre estabilidade e educação financeira.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/7.png') }}" alt="Instituto Barros" loading="eager" />
+          <h3>Instituto Barros</h3>
+          <p>Instituto Barros é referência na área de fisioterapia esportiva em Santos.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/8.png') }}" alt="Blog Ferramentas" loading="eager" />
+          <h3>Blog Ferramentas</h3>
+          <p>Blog com artigos de ferramentas elétricas para instalação segura.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/9.png') }}" alt="InnovaSfera" loading="eager" />
+          <h3>InnovaSfera</h3>
+          <p>Empresa de tecnologia foco em ajudar empresas com produtos digitais.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/10.png') }}" alt="Citrosuco" loading="eager" />
+          <h3>Citrosuco</h3>
+          <p>Citrosuco é uma empresa que atua no setor de sucos naturais.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/11.png') }}" alt="Traning Now" loading="eager" />
+          <h3>Traning Now</h3>
+          <p>Gerenciador de treinos personalizados, usados em grandes academias.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+        <div class="project">
+          <img src="{{ url_for('static', filename='assets/images/12.png') }}" alt="Espaço Menina Mulher"
+            loading="eager" />
+          <h3>Espaço Menina Mulher</h3>
+          <p>Seus cabelos precisam de cuidados? Espaço Menina Mulher é o lugar certo.</p>
+          <div class="tags"><span class="tag design">Design</span><span class="tag programacao">Programação</span></div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <section id="s-faq" class="c-faq">
+    <div class="grid-layout">
+      <h2>Perguntas frequentes</h2>
+      <div class="faq-grid">
+        <div class="faq-item open">
+          <div class="faq-question">
+            <h3>Você fornece desenvolvimento também?</h3>
+            <button class="toggle-btn" type="button" aria-label="Fechar item">
+              <img src="{{ url_for('static', filename='assets/icons/MinusCircle.svg') }}" alt="Fechar"
+                loading="eager" />
+            </button>
+          </div>
+          <div class="faq-answer">
+            No momento meu foco principal está no desenvolvimento frontend, com
+            estudos constantes para evoluir na prática.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Qual é a duração de um projeto?</h3>
+            <button class="toggle-btn" type="button" aria-label="Abrir item">
+              <img src="{{ url_for('static', filename='assets/icons/PlusCircle.svg') }}" alt="Abrir" loading="eager" />
+            </button>
+          </div>
+          <div class="faq-answer">
+            Como estou no início da carreira, sigo construindo projetos para
+            fortalecer meu portfólio e ganhar mais experiência.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Quais as tecnologias você usa?</h3>
+            <button class="toggle-btn" type="button" aria-label="Abrir item">
+              <img src="{{ url_for('static', filename='assets/icons/PlusCircle.svg') }}" alt="Abrir" loading="eager" />
+            </button>
+          </div>
+          <div class="faq-answer">
+            Hoje uso HTML, CSS e JavaScript. Também estou aprendendo Python com
+            Flask e engenharia de prompts.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <a href="https://www.linkedin.com/in/joao-victor-rodrigues-delgado-320557372/" target="_blank" rel="noopener"
+    aria-label="Abrir LinkedIn">
+    <div id="whatsapp-floating-button">
+      <img src="{{ url_for('static', filename='assets/icons/whatsapp.svg') }}" alt="LinkedIn" loading="eager" />
+    </div>
+  </a>
+
+  <footer id="s-footer" class="c-footer">
+    <article>
+      <div class="grid-layout">
+        <span>
+          <p class="name">JoaoVictorCoder</p>
+          <p>© 2026 by <b>JoaoVictorCoder</b></p>
+        </span>
+
+        <div class="social">
+          <h3>Social</h3>
+          <ul>
+            <li><a href="https://www.linkedin.com/in/joao-victor-rodrigues-delgado-320557372/" target="_blank"
+                rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/JoaoVictorCoder" target="_blank" rel="noopener">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </footer>
+</main>
+{% endblock %}

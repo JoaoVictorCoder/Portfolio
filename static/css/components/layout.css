@@ -1,0 +1,8 @@
+.grid-layout {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+}
+
+main {
+  overflow: hidden;
+}

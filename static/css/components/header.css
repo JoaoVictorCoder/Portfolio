@@ -1,0 +1,33 @@
+.c-header {
+  padding: var(--space-0) var(--space-50);
+  background: rgba(0, 0, 0, 0);
+  z-index: 999;
+  width: 100%;
+  position: absolute;
+  top: var(--space-0);
+  left: var(--space-0);
+}
+
+.c-header .c-header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font: url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+  height: var(--space-100);
+  padding: var(--space-0) var(--space-8);
+}
+
+.c-header .c-header__nav img {
+  width: 124px;
+}
+
+@media screen and (max-width:992px) {
+  .c-header {
+    padding: var(--space-0) var(--space-24);
+  }
+
+  .c-header .c-header__nav {
+    justify-content: center;
+  }
+}

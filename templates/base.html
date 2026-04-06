@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="author" content="JoaoVictorCoder" />
+  <meta name="description"
+    content="Meu nome é JoaoVictorCoder. Sou um Dev Frontend, sem experiência, e uso HTML, CSS e JavaScript. Estou aprendendo Python com Flask e engenharia de prompts." />
+  <meta name="keywords"
+    content="portfolio, frontend, html, css, javascript, js, python, flask, engenharia de prompts, joaovictorcoder" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#986DFF" />
+  <meta name="copyright" content="JoaoVictorCoder 2026" />
+  <meta http-equiv="content-language" content="pt-br" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static', filename='assets/icons/logo-page.svg') }}" />
+  <link rel="icon" href="{{ url_for('static', filename='assets/icons/logo-page.svg') }}" />
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='assets/icons/logo-page.svg') }}" />
+  <link rel="canonical" href="{{ url_for('static', filename='assets/resource_a0b5b4f11f8c.html') }}" />
+  <title>{% block title %}Portfólio // JoaoVictorCoder{% endblock %}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/tokens.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}" />
+  {% if component_css %}
+  <link rel="stylesheet" href="{{ url_for('static', filename=component_css) }}" />
+  {% endif %}
+
+  <script data-generated-importmap="true" type="importmap">
+      {
+        "imports": {
+          "https://iuricode.com/assets/js/main.js": "{{ url_for('static', filename='js/main.js') }}",
+          "http://iuricode.com/assets/js/main.js": "{{ url_for('static', filename='js/main.js') }}",
+          "https://iuricode.com/assets/js/menu.js": "{{ url_for('static', filename='js/menu.js') }}",
+          "http://iuricode.com/assets/js/menu.js": "{{ url_for('static', filename='js/menu.js') }}"
+        }
+      }
+    </script>
+  <script src="{{ url_for('static', filename='js/reveal-fallback.js') }}"></script>
+  <script type="module" src="{{ url_for('static', filename='js/loader.js') }}"></script>
+</head>
+
+<body>
+  {% block content %}{% endblock %}
+  {% block scripts %}{% endblock %}
+</body>
+
+</html>

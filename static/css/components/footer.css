@@ -1,0 +1,103 @@
+.c-footer {
+  background-image: url("../../assets/images/hero.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: var(--space-40) var(--space-0);
+}
+
+.c-footer article {
+  height: auto;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  padding: var(--space-96) var(--space-20);
+  margin: var(--space-40) auto;
+  border-radius: var(--radius-xl);
+  max-width: 95%;
+}
+
+.c-footer .grid-layout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.c-footer p {
+  font-size: var(--font-size-20);
+  color: var(--color-body);
+  margin: var(--space-16) var(--space-0);
+}
+
+.c-footer p b {
+  color: var(--color-heading);
+  font-weight: var(--font-weight-600);
+}
+
+.c-footer .name {
+  color: var(--color-heading);
+  font-weight: var(--font-weight-600);
+}
+
+.c-footer .social {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-18);
+}
+
+.c-footer .social h3 {
+  font-size: var(--font-size-20);
+  color: var(--color-heading);
+  font-weight: var(--font-weight-600);
+}
+
+.c-footer ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-18);
+}
+
+.c-footer ul li {
+  color: var(--color-brand);
+  font-size: var(--font-size-18);
+}
+
+.c-footer ul li a {
+  color: var(--color-brand);
+  position: relative;
+}
+
+.c-footer ul li a::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: calc(var(--space-7) * -1);
+  left: var(--space-0);
+  background: var(--gradient-brand);
+  transform-origin: bottom right;
+  transition: var(--transition-link);
+}
+
+.c-footer ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+@media screen and (max-width:1200px) {
+  .c-footer .grid-layout {
+    flex-wrap: wrap;
+    gap: var(--space-48);
+  }
+}
+
+@media screen and (max-width:992px) {
+  .c-footer .grid-layout,
+  .c-footer span,
+  .c-footer .social,
+  .c-footer ul {
+    width: 100%;
+    text-align: center;
+  }
+}
