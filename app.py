@@ -1,22 +1,16 @@
-from flask import Flask, abort, render_template
-from jinja2 import TemplateNotFound
+from pathlib import Path
+import sys
 
-app = Flask(__name__)
+PROJECT_ROOT = Path(__file__).resolve().parent
+SOURCE_DIR = PROJECT_ROOT / 'src'
 
+if str(SOURCE_DIR) not in sys.path:
+    sys.path.insert(0, str(SOURCE_DIR))
 
-@app.route("/")
-def index() -> str:
-    return render_template("index.html", component_css="css/components/index.css")
+from portfolio import create_flask_app
 
-
-@app.route("/<name_page>")
-def page(name_page: str) -> str:
-    template_name = f"{name_page}.html"
-    try:
-        return render_template(template_name, component_css=f"css/components/{name_page}.css")
-    except TemplateNotFound:
-        abort(404)
+app = create_flask_app()
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)
