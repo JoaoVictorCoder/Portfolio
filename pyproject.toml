@@ -1,5 +1,5 @@
 [project]
-name = "Portfolio JoaoVictorCoder"
+name = "Portfolio-JoaoVictorCoder"
 version = "0.1.0"
 description = "Portfolio"
 requires-python = ">=3.11"
