@@ -78,28 +78,6 @@ html {
   animation: home-grid-chain 0.42s ease-out;
 }
 
-@keyframes home-grid-chain {
-  0% {
-    background: rgba(0, 200, 255, 0.08);
-    box-shadow: 0 0 6px rgba(0, 200, 255, 0.15);
-    transform: scale(1);
-  }
-
-  45% {
-    background: rgba(0, 200, 255, 0.24);
-    box-shadow:
-      0 0 12px rgba(0, 200, 255, 0.45),
-      0 0 26px rgba(0, 200, 255, 0.2);
-    transform: scale(1.03);
-  }
-
-  100% {
-    background: rgba(255, 255, 255, 0.03);
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-    transform: scale(1);
-  }
-}
-
 .c-home#s-home .grid-layout {
   position: relative;
   z-index: 2;
@@ -132,12 +110,6 @@ html {
   margin-left: 0.06em;
   opacity: 1;
   animation: home-typewriter-caret 0.9s steps(1) infinite;
-}
-
-@keyframes home-typewriter-caret {
-  50% {
-    opacity: 0;
-  }
 }
 
 .c-home#s-home #home #home-container-text h2 {

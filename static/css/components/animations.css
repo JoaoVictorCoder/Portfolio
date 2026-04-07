@@ -1,0 +1,39 @@
+@keyframes home-grid-chain {
+    0% {
+        background: rgba(0, 200, 255, 0.08);
+        box-shadow: 0 0 6px rgba(0, 200, 255, 0.15);
+        transform: scale(1);
+    }
+
+    45% {
+        background: rgba(0, 200, 255, 0.24);
+        box-shadow:
+            0 0 12px rgba(0, 200, 255, 0.45),
+            0 0 26px rgba(0, 200, 255, 0.2);
+        transform: scale(1.03);
+    }
+
+    100% {
+        background: rgba(255, 255, 255, 0.03);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        transform: scale(1);
+    }
+}
+
+@keyframes home-typewriter-caret {
+    50% {
+        opacity: 0;
+    }
+}
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
