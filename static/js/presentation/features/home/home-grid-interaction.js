@@ -13,7 +13,6 @@ export function initializeHomeGridInteraction() {
   let animationFramePending = false;
   let lastPointerX = 0;
   let lastPointerY = 0;
-  let chainAnimationTimers = [];
 
   function buildGridCells() {
     const sectionRect = homeSection.getBoundingClientRect();
@@ -45,11 +44,6 @@ export function initializeHomeGridInteraction() {
     for (const gridCell of gridCells) {
       gridCell.classList.remove('active', 'near', 'chain');
     }
-  }
-
-  function clearChainAnimationTimers() {
-    chainAnimationTimers.forEach((timerId) => window.clearTimeout(timerId));
-    chainAnimationTimers = [];
   }
 
   function highlightGridFromPointer(clientX, clientY) {
@@ -130,13 +124,45 @@ export function initializeHomeGridInteraction() {
     }
   }
 
+  function getGridIndexFromPoint(clientX, clientY) {
+    const sectionRect = homeSection.getBoundingClientRect();
+    const relativePointerX = clientX - sectionRect.left;
+    const relativePointerY = clientY - sectionRect.top;
+
+    if (
+      relativePointerX < 0 ||
+      relativePointerY < 0 ||
+      relativePointerX > sectionRect.width ||
+      relativePointerY > sectionRect.height
+    ) {
+      return -1;
+    }
+
+    const columnIndex = Math.min(
+      columnCount - 1,
+      Math.floor((relativePointerX / sectionRect.width) * columnCount),
+    );
+    const rowIndex = Math.min(
+      rowCount - 1,
+      Math.floor((relativePointerY / sectionRect.height) * rowCount),
+    );
+
+    if (
+      columnIndex < 0 ||
+      columnIndex >= columnCount ||
+      rowIndex < 0 ||
+      rowIndex >= rowCount
+    ) {
+      return -1;
+    }
+
+    return rowIndex * columnCount + columnIndex;
+  }
+
   function startChainAnimationFromIndex(startIndex) {
     if (startIndex < 0 || startIndex >= gridCells.length) {
       return;
     }
-
-    clearChainAnimationTimers();
-    clearGridEffects();
 
     const startRow = Math.floor(startIndex / columnCount);
     const startColumn = startIndex % columnCount;
@@ -147,33 +173,45 @@ export function initializeHomeGridInteraction() {
       const manhattanDistance = Math.abs(row - startRow) + Math.abs(column - startColumn);
       const animationDelay = manhattanDistance * 35;
 
-      const timerId = window.setTimeout(() => {
+      window.setTimeout(() => {
         const cell = gridCells[index];
 
         if (!cell) {
           return;
         }
 
-        cell.classList.remove('chain');
-        // Reinicia a animação para cliques em sequência.
-        void cell.offsetWidth;
-        cell.classList.add('chain');
+        cell.animate(
+          [
+            {
+              background: 'rgba(0, 200, 255, 0.08)',
+              boxShadow: '0 0 6px rgba(0, 200, 255, 0.15)',
+              transform: 'scale(1)',
+            },
+            {
+              background: 'rgba(0, 200, 255, 0.24)',
+              boxShadow: '0 0 12px rgba(0, 200, 255, 0.45), 0 0 26px rgba(0, 200, 255, 0.2)',
+              transform: 'scale(1.03)',
+              offset: 0.45,
+            },
+            {
+              background: 'rgba(255, 255, 255, 0.03)',
+              boxShadow: '0 0 0 rgba(0, 0, 0, 0)',
+              transform: 'scale(1)',
+            },
+          ],
+          {
+            duration: 420,
+            easing: 'ease-out',
+          },
+        );
       }, animationDelay);
-
-      chainAnimationTimers.push(timerId);
     }
   }
 
   function handleGridClick(event) {
-    const clickedCell = event.target.closest('.home-grid-cell');
+    const clickedCellIndex = getGridIndexFromPoint(event.clientX, event.clientY);
 
-    if (!clickedCell || !homeGrid.contains(clickedCell)) {
-      return;
-    }
-
-    const clickedCellIndex = Number(clickedCell.dataset.index);
-
-    if (Number.isNaN(clickedCellIndex)) {
+    if (clickedCellIndex < 0) {
       return;
     }
 
@@ -182,7 +220,7 @@ export function initializeHomeGridInteraction() {
 
   window.addEventListener('mousemove', handlePointerMove);
   homeSection.addEventListener('mouseleave', clearGridEffects);
-  homeGrid.addEventListener('click', handleGridClick);
+  homeSection.addEventListener('click', handleGridClick);
   window.addEventListener('resize', buildGridCells);
 
   if ('ResizeObserver' in window) {
