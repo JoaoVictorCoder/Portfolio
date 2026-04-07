@@ -20,15 +20,6 @@ export function initializeHomeTitleTypewriter() {
     return;
   }
 
-  const prefersReducedMotion =
-    'matchMedia' in window &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  if (prefersReducedMotion) {
-    homeTitle.textContent = fullText;
-    return;
-  }
-
   homeTitle.textContent = '';
   homeTitle.classList.add('is-typewriting');
 
