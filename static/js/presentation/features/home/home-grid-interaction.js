@@ -1,13 +1,9 @@
-function getScaleFactor() {
-  const baseWidth = 1440;
-  const baseHeight = 900;
-  const currentWidth = Math.max(1, window.innerWidth || baseWidth);
-  const currentHeight = Math.max(1, window.innerHeight || baseHeight);
-  const currentDiagonal = Math.hypot(currentWidth, currentHeight);
-  const baseDiagonal = Math.hypot(baseWidth, baseHeight);
-  const rawScale = currentDiagonal / baseDiagonal;
-  return Math.min(1.45, Math.max(0.6, rawScale));
-}
+/**
+ * Mantemos uma malha fixa para preservar a mesma quantidade de células
+ * em qualquer resolução.
+ */
+const FIXED_GRID_COLUMNS = 30;
+const FIXED_GRID_ROWS = 20;
 
 export function initializeHomeGridInteraction() {
   const homeSection = document.getElementById('s-home');
@@ -17,9 +13,7 @@ export function initializeHomeGridInteraction() {
     return;
   }
 
-  const baseGridCellSize = 48;
   const interactiveOrbitRadius = 2;
-  let gridCellSize = baseGridCellSize * getScaleFactor();
   let columnCount = 0;
   let rowCount = 0;
   let gridCells = [];
@@ -29,15 +23,13 @@ export function initializeHomeGridInteraction() {
   let lastPointerX = 0;
   let lastPointerY = 0;
 
+  /**
+   * Constrói a grid com dimensões fixas.
+   * A densidade visual da malha não muda com o tamanho de tela.
+   */
   function buildGridCells() {
-    gridCellSize = baseGridCellSize * getScaleFactor();
-
-    const sectionRect = homeSection.getBoundingClientRect();
-    const sectionWidth = Math.max(1, Math.ceil(sectionRect.width));
-    const sectionHeight = Math.max(1, Math.ceil(sectionRect.height));
-
-    const nextColumnCount = Math.max(1, Math.ceil(sectionWidth / gridCellSize));
-    const nextRowCount = Math.max(1, Math.ceil(sectionHeight / gridCellSize));
+    const nextColumnCount = FIXED_GRID_COLUMNS;
+    const nextRowCount = FIXED_GRID_ROWS;
 
     const gridShapeUnchanged =
       nextColumnCount === columnCount &&
