@@ -1,3 +1,14 @@
+function getScaleFactor() {
+  const baseWidth = 1440;
+  const baseHeight = 900;
+  const currentWidth = Math.max(1, window.innerWidth || baseWidth);
+  const currentHeight = Math.max(1, window.innerHeight || baseHeight);
+  const currentDiagonal = Math.hypot(currentWidth, currentHeight);
+  const baseDiagonal = Math.hypot(baseWidth, baseHeight);
+  const rawScale = currentDiagonal / baseDiagonal;
+  return Math.min(1.45, Math.max(0.6, rawScale));
+}
+
 export function initializeHomeGridInteraction() {
   const homeSection = document.getElementById('s-home');
   const homeGrid = document.getElementById('home-grid-bg');
@@ -6,8 +17,9 @@ export function initializeHomeGridInteraction() {
     return;
   }
 
-  const gridCellSize = 50;
+  const baseGridCellSize = 48;
   const interactiveOrbitRadius = 2;
+  let gridCellSize = baseGridCellSize * getScaleFactor();
   let columnCount = 0;
   let rowCount = 0;
   let gridCells = [];
@@ -18,12 +30,26 @@ export function initializeHomeGridInteraction() {
   let lastPointerY = 0;
 
   function buildGridCells() {
+    gridCellSize = baseGridCellSize * getScaleFactor();
+
     const sectionRect = homeSection.getBoundingClientRect();
     const sectionWidth = Math.max(1, Math.ceil(sectionRect.width));
     const sectionHeight = Math.max(1, Math.ceil(sectionRect.height));
 
-    columnCount = Math.max(1, Math.ceil(sectionWidth / gridCellSize));
-    rowCount = Math.max(1, Math.ceil(sectionHeight / gridCellSize));
+    const nextColumnCount = Math.max(1, Math.ceil(sectionWidth / gridCellSize));
+    const nextRowCount = Math.max(1, Math.ceil(sectionHeight / gridCellSize));
+
+    const gridShapeUnchanged =
+      nextColumnCount === columnCount &&
+      nextRowCount === rowCount &&
+      gridCells.length === nextColumnCount * nextRowCount;
+
+    if (gridShapeUnchanged) {
+      return;
+    }
+
+    columnCount = nextColumnCount;
+    rowCount = nextRowCount;
 
     homeGrid.style.setProperty('--home-grid-cols', String(columnCount));
     homeGrid.style.setProperty('--home-grid-rows', String(rowCount));
@@ -295,7 +321,13 @@ export function initializeHomeGridInteraction() {
   window.addEventListener('mousemove', handlePointerMove);
   window.addEventListener('click', handleGridClick);
   homeSection.addEventListener('mouseleave', handlePointerLeave);
-  window.addEventListener('resize', buildGridCells);
+  window.addEventListener('resize', () => {
+    buildGridCells();
+
+    if (pointerInsideHome) {
+      highlightGridFromPointer(lastPointerX, lastPointerY, performance.now());
+    }
+  });
 
   if ('ResizeObserver' in window) {
     const sectionResizeObserver = new ResizeObserver(() => {
