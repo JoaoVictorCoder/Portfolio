@@ -219,8 +219,8 @@ export function initializeHomeGridInteraction() {
   }
 
   window.addEventListener('mousemove', handlePointerMove);
+  window.addEventListener('click', handleGridClick);
   homeSection.addEventListener('mouseleave', clearGridEffects);
-  homeSection.addEventListener('click', handleGridClick);
   window.addEventListener('resize', buildGridCells);
 
   if ('ResizeObserver' in window) {
